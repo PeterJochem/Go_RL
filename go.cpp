@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stdio.h>
+#include <tensorflow/c/c_api.h>
 
 #ifdef __APPLE_CC__
 #include <GLUT/glut.h>
@@ -11,6 +13,7 @@
 class Player;
 class Game;
 class Move;
+class Board;
 
 /* Describe this method
  */
@@ -54,6 +57,13 @@ class Game {
 
 };
 
+/* Describe here
+ */
+class Board {
+	
+
+
+};
 
 /* Describe this class
  */
@@ -102,7 +112,7 @@ void display() {
   glClear(GL_COLOR_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
 
-  // glPushMatrix();
+  glPushMatrix();
   // glTranslatef(0.0, 0.0, 0.0);
   // glColor3f(1.0, 1.0, 1.0);
   // glColor3f(0.3, 0.3, 0.3);
@@ -113,8 +123,31 @@ void display() {
   // of the system and its training ability
   // Draw the board once!!!!!!!!!
   // DON'T redraw the pieces
-  // 
+  
+  //color red 0.847059 green 0.847059 blue 0.74902
+  glColor3f(0.847, 0.847, 0.74902);
+  glBegin(GL_POLYGON);
+  glVertex3f(-2.0, 2.0, 0.0);
+  glVertex3f(2.0, 2.0, 0.0);
+  glVertex3f(2.0, -2.0, 0.0);
+  glVertex3f(-2.0, -2.0, 0.0);
+ glEnd(); 
+ 	
+glColor3f(0.2, 0.2, 0.2);
+  glBegin(GL_POLYGON);
+  glVertex3f(-2.0, 0.025, 0.0);
+  glVertex3f(2.0, 0.025, 0.0);
+  glVertex3f(2.0, -0.025, 0.0);
+  glVertex3f(-2.0, -0.025, 0.0);
+ glEnd();
+
 	
+
+  glTranslatef(0.0, 0.0, 0.0);
+  glColor3f(1.0, 1.0, 1.0);
+  //glColor3f(0.3, 0.3, 0.3);
+  glutSolidSphere(0.1, 50, 50);
+  glPopMatrix();
 
 
   // Push objects to the screen
@@ -128,7 +161,9 @@ void reshape(GLint w, GLint h) {
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(65.0, GLfloat(w)/GLfloat(h), 1.0, 20.0);
+  //gluPerspective(65.0, GLfloat(w)/GLfloat(h), 1.0, 20.0);
+  gluPerspective(50.0, GLfloat(w)/GLfloat(h), 1.0, 20.0);
+
 }
 
 
@@ -140,7 +175,8 @@ void init() {
   glShadeModel(GL_FLAT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt(1, 2, 8, 0, 0, 0, 0, 1, 0);
+  //gluLookAt(1, 2, 8, 0, 0, 0, 0, 1, 0);
+  gluLookAt(0, 0, 8, 0, 0, 0, 0, 1, 0);
 
   // Set the background color to white
   glClearColor(1.0, 1.0, 1.0, 1.0);
@@ -148,6 +184,8 @@ void init() {
 
 int main(int argc, char** argv) {
 
+	printf("Hello from TensorFlow C library version %s\n", TF_Version());
+	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 

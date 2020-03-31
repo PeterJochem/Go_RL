@@ -11,6 +11,8 @@ project(Go_RL)
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
+find_package(/usr/local/lib/tensorflow REQUIRED)
+
 # add the executable
 add_executable(main main.cpp)
 
