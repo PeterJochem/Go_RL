@@ -7,6 +7,84 @@
 #include <GL/glut.h>
 #endif
 
+// Class prototypes
+class Player;
+class Game;
+class Move;
+
+/* Describe this method
+ */
+class Player {
+
+	public:
+		char* name; // Name of the bot/human
+                int version; // Denotes iteration of certain bot
+		bool isAI; // Describes if this is an AI or human
+		
+		// Constructor
+		Player(void) {
+			
+		}
+		
+		
+		void incrementVersion(void);
+		Move chooseMove(void);
+			
+
+	private:
+
+};
+
+
+/* Describe this method
+ */
+class Game {
+
+	public:
+		
+		Player player1;
+		Player player2;
+
+		Game(void) {
+
+
+		}
+
+	private:
+
+};
+
+
+/* Describe this class
+ */
+class Move {
+
+	public:		
+			
+		char h;
+
+		/* Constructor
+		 */ 
+		Move(void) {
+			this->h = 'r';
+		}
+
+	private:
+};
+
+ /* Chooses a move for the player
+  * Returns the chosen move
+  */
+  Move Player::chooseMove(void) {
+	  return Move();
+   }
+  
+  /* Increment the player's version number
+   */
+  void Player::incrementVersion(void) {
+	this->version++;
+  }
+
 // Handles keyboard events
 void special(int key, int, int) {
   switch (key) {
@@ -24,14 +102,22 @@ void display() {
   glClear(GL_COLOR_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
 
-  glPushMatrix();
-  
-  glTranslatef(0.0, 0.0, 0.0);
+  // glPushMatrix();
+  // glTranslatef(0.0, 0.0, 0.0);
   // glColor3f(1.0, 1.0, 1.0);
-  glColor3f(0.3, 0.3, 0.3);
-  glutSolidSphere(0.5, 50, 50);
-  glPopMatrix();
+  // glColor3f(0.3, 0.3, 0.3);
+  // glutSolidSphere(0.5, 50, 50);
+  // glPopMatrix();
+  	
+  // Optimize the graphics right away - will make big diffrence in speec
+  // of the system and its training ability
+  // Draw the board once!!!!!!!!!
+  // DON'T redraw the pieces
+  // 
+	
 
+
+  // Push objects to the screen
   glFlush();
 }
 
