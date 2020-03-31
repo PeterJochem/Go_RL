@@ -32,8 +32,15 @@ void Group::mergeGroup(Group) {
 
 }
 
+/* Overloads the << operator
+ */
 std::ostream& operator<<(std::ostream& os, const Group& myGroup) {
-    os << "HELLLOOOO";
+   	
+   // Print the locations of all the pieces in the group	
+   for (int i = 0; i < myGroup.allMoves.size(); ++i) {	
+   	os << myGroup.allMoves[i] << std::endl;
+   }
+    
     return os;
 }
 

@@ -14,7 +14,6 @@
 #include "Group.h"
 #endif
 
-
 #ifndef GAME_H
 #define GAME_H
 #include "Game.h"
@@ -38,13 +37,6 @@
 
 #include </usr/include/python3.6m/Python.h>
 
- /* Chooses a move for the player
-  * Returns the chosen move
-  
-  Move Player::chooseMove(void) {
-	  return Move();
-   }
-  */  
 
 // Handles keyboard events
 void special(int key, int, int) {
@@ -118,7 +110,6 @@ void reshape(GLint w, GLint h) {
 }
 
 
-
 // Perfroms application specific initialization: turn off smooth shading,
 // sets the viewing transformation once and for all.  In this application we
 // won't be moving the camera at all, so it makes sense to do this.
@@ -136,8 +127,6 @@ void init() {
 
 int main(int argc, char** argv) {
 
-	//printf("Hello from TensorFlow C library version %s\n", TF_Version());
-	
 	// Launch the training client
 	// This Python script will handle do the NN training via keras
 	// This C++ system will generate data	
@@ -147,7 +136,13 @@ int main(int argc, char** argv) {
 	system(command.c_str());
 
 	Player myPlayer;
+	
+	Group myGroup;
+	Move myMove(1, 4);
+	myGroup.addPiece(myMove);
+	std::cout << myGroup;
 
+	// Start the openGL loop
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 
