@@ -1,7 +1,34 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
-#include <tensorflow/c/c_api.h>
+
+// #include <tensorflow/c/c_api.h>
+
+#ifndef PLAYER_H
+#define PLAYER_H
+#include "Player.h"
+#endif
+
+#ifndef GROUP_H
+#define GROUP_H
+#include "Group.h"
+#endif
+
+
+#ifndef GAME_H
+#define GAME_H
+#include "Game.h"
+#endif
+
+#ifndef BOARD_H
+#define BOARD_H
+#include "Board.h"
+#endif
+
+#ifndef MOVE_H
+#define MOVE_H
+#include "Move.h"
+#endif
 
 #ifdef __APPLE_CC__
 #include <GLUT/glut.h>
@@ -9,91 +36,15 @@
 #include <GL/glut.h>
 #endif
 
-// Class prototypes
-class Player;
-class Game;
-class Move;
-class Board;
-
-/* Describe this method
- */
-class Player {
-
-	public:
-		char* name; // Name of the bot/human
-                int version; // Denotes iteration of certain bot
-		bool isAI; // Describes if this is an AI or human
-		
-		// Constructor
-		Player(void) {
-			
-		}
-		
-		
-		void incrementVersion(void);
-		Move chooseMove(void);
-			
-
-	private:
-
-};
-
-
-/* Describe this method
- */
-class Game {
-
-	public:
-		
-		Player player1;
-		Player player2;
-
-		Game(void) {
-
-
-		}
-
-	private:
-
-};
-
-/* Describe here
- */
-class Board {
-	
-
-
-};
-
-/* Describe this class
- */
-class Move {
-
-	public:		
-			
-		char h;
-
-		/* Constructor
-		 */ 
-		Move(void) {
-			this->h = 'r';
-		}
-
-	private:
-};
+#include </usr/include/python3.6m/Python.h>
 
  /* Chooses a move for the player
   * Returns the chosen move
-  */
+  
   Move Player::chooseMove(void) {
 	  return Move();
    }
-  
-  /* Increment the player's version number
-   */
-  void Player::incrementVersion(void) {
-	this->version++;
-  }
+  */  
 
 // Handles keyboard events
 void special(int key, int, int) {
@@ -182,10 +133,21 @@ void init() {
   glClearColor(1.0, 1.0, 1.0, 1.0);
 }
 
+
 int main(int argc, char** argv) {
 
-	printf("Hello from TensorFlow C library version %s\n", TF_Version());
+	//printf("Hello from TensorFlow C library version %s\n", TF_Version());
 	
+	// Launch the training client
+	// This Python script will handle do the NN training via keras
+	// This C++ system will generate data	
+	std::string filename = "../training.py";
+	std::string command = "python3 ";
+	command += filename;
+	system(command.c_str());
+
+	Player myPlayer;
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 

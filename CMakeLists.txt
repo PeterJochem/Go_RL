@@ -11,13 +11,11 @@ project(Go_RL)
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
-find_package(/usr/local/lib/tensorflow REQUIRED)
-
 # add the executable
-add_executable(main main.cpp)
+add_executable(go go.cpp Board.cpp  Game.cpp Group.cpp  Move.cpp Player.cpp)
 
 # Link the libraries to the files we wrote
 include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
 
-target_link_libraries(main ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
+target_link_libraries(go ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
 

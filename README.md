@@ -18,3 +18,7 @@ Describe the data visualizations
 Unfortuantely, Tensorflow 2 no longer supports CMake. They have moved onto Bazel. So, I opted not to use CMake and instead compile my code using the following
 ```export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib```
 ```g++ main.cpp -o gl -lGL -lGLU -lglut -ltensorflow```
+
+Remember to compile all the class.cpp files too ->
+g++ go.cpp Player.cpp Move.cpp Board.cpp Game.cpp Group.cpp -o go -lGL -lGLU -lglut -ltensorflow
+
